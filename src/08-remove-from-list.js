@@ -1,3 +1,14 @@
+/* eslint-disable max-len */
+/* eslint-disable consistent-return */
+/* eslint-disable no-console */
+/* eslint-disable prefer-const */
+/* eslint-disable no-self-assign */
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-continue */
+/* eslint-disable no-restricted-syntax */
+/* jshint esversion:6 */
 /**
  * Given a singly linked list of integers l and an integer k,
  * remove all elements from list l that have a value equal to k.
@@ -17,8 +28,19 @@
  * }
  */
 
-function removeKFromList(/* l, k */) {
-  throw new Error('Not implemented');
+function removeKFromList(list, k) {
+  let currentNode = list;
+  let nextNode = list.next;
+  while (currentNode.next !== null) {
+    if (currentNode.value === k) {
+      currentNode.value = nextNode.value;
+      currentNode.next = nextNode.next;
+    } else {
+      currentNode = nextNode;
+      nextNode = nextNode.next;
+    }
+  }
+  return list;
 }
 
 module.exports = removeKFromList;
